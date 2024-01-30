@@ -20,8 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Install dependencies
-        run: |
-          java -jar ./artifacts/app-card-delivery.jar &
+        run: java -jar ./artifacts/app-ibank.jar. &
           chmod +x gradlew
 
       - name: Build with Gradle
