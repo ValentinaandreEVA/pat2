@@ -1,10 +1,10 @@
 package ru.netology.data;
+
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-
 import lombok.Value;
 
 import java.util.Locale;
@@ -37,10 +37,12 @@ public class DataGenerator {
         return user;
     }
 
-    public static String getRandomLogin() {return faker.name().username();
+    public static String getRandomLogin() {
+        return faker.name().username();
     }
 
-    public static String getRandomPassword() {return faker.internet().password();
+    public static String getRandomPassword() {
+        return faker.internet().password();
     }
 
     public static class Registration {
@@ -51,7 +53,8 @@ public class DataGenerator {
             return new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
         }
 
-        public static RegistrationDto getRegisteredUser(String status) {return sendRequest(getUser(status));
+        public static RegistrationDto getRegisteredUser(String status) {
+            return sendRequest(getUser(status));
         }
     }
 

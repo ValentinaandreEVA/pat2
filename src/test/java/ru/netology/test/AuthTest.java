@@ -19,11 +19,13 @@ import static ru.netology.data.DataGenerator.getRandomPassword;
 class AuthTest {
 
     @BeforeEach
-    void setup(){open("http://localhost:9999");}
+    void setup() {
+        open("http://localhost:9999");
+    }
 
     @Test
     @DisplayName("Should successfully login with active registered user")
-    void ShouldSuccessfullyLoginWithActiveRegisteredUser(){
+    void ShouldSuccessfullyLoginWithActiveRegisteredUser() {
         var registeredUser = getRegisteredUser("active");
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
@@ -33,7 +35,7 @@ class AuthTest {
 
     @Test
     @DisplayName("Should get error message if login not registered user")
-    void ShouldGetErrorMessageIfLoginNotRegisteredUser(){
+    void ShouldGetErrorMessageIfLoginNotRegisteredUser() {
         var notRegisteredUser = getUser("active");
         $("[data-test-id='login'] input").setValue(notRegisteredUser.getLogin());
         $("[data-test-id='password'] input").setValue(notRegisteredUser.getPassword());
@@ -45,9 +47,9 @@ class AuthTest {
 
     @Test
     @DisplayName("Should get error message if login with wrong login")
-    void ShouldGetErrorMessageIfLoginWithWrongLogin(){
+    void ShouldGetErrorMessageIfLoginWithWrongLogin() {
         var registeredUser = getRegisteredUser("active");
-        var wrongLogin=getRandomLogin();
+        var wrongLogin = getRandomLogin();
         $("[data-test-id='login'] input").setValue(wrongLogin);
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
@@ -58,9 +60,9 @@ class AuthTest {
 
     @Test
     @DisplayName("Should get error message if login with wrong password")
-    void ShouldGetErrorMessageIfLoginWithWrongPassword(){
+    void ShouldGetErrorMessageIfLoginWithWrongPassword() {
         var registeredUser = getRegisteredUser("active");
-        var wrongPassword=getRandomPassword();
+        var wrongPassword = getRandomPassword();
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(wrongPassword);
         $("button.button").click();
@@ -71,9 +73,9 @@ class AuthTest {
 
     @Test
     @DisplayName("Should get error message if login with blocked registered user")
-    void ShouldGetErrorMessageIfLoginWithBlockedRegisteredUser(){
+    void ShouldGetErrorMessageIfLoginWithBlockedRegisteredUser() {
         var blockedUser = getRegisteredUser("blocked");
-        var wrongPassword=getRandomPassword();
+        var wrongPassword = getRandomPassword();
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("button.button").click();
